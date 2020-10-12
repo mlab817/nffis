@@ -1,0 +1,112 @@
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+    users: [User!]! @paginate(defaultCount: 10)
+    user(id: ID @eq): User @find
+
+    personal_information: [PersonalInformation] @paginate
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type PersonalInformation {
+    id: Int
+    created_date: String!
+    updated_date: String!
+    barangay_name: String!
+    barangay_uuid: String!
+    barangay_verification: String!
+    cct4ps_beneficiary: Boolean!
+    certificate_degree: String!
+    civil_status_uuid: String!
+    contact_number: String!
+    created_by: String!
+    created_date_day: Int!
+    created_date_month: Int!
+    created_date_year: Int!
+    date_of_birth_day: Int!
+    date_of_birth_month: Int!
+    date_of_birth_year: Int!
+    education_uuid: String!
+    firstname: String!
+    sex: String!
+    house_location_map_uuid: String!
+    household_female: Int!
+    household_head: Boolean!
+    household_male: Int!
+    household_relationship: String!
+    id_number: String!
+    indigenous_group: String!
+    indigenous_people: Boolean!
+    lastname: String!
+    lot: String!
+    middlename: String!
+    municipal_name: String!
+    municipal_uuid: String!
+    number_of_household_members: Int!
+    other_household_head: String!
+    person_to_notify: String!
+    person_to_notify_number: String!
+    person_with_disability: Boolean!
+    place_of_birth: String!
+    province_name: String!
+    province_uuid: String!
+    region_name: String!
+    region_uuid: String!
+    religion: String!
+    salutation_uuid: String!
+    sequence_number: String!
+    previous_sequence_number: String!
+    spouse_name: String!
+    street: String!
+    suffix_uuid: String!
+    type_of_id: String!
+    updated_by: String!
+    updated_date_day: Int!
+    updated_date_month: Int!
+    updated_date_year: Int!
+    uuid: String!
+    user_uuid: String!
+    indigenous_group_uuid: String!
+    religion_uuid: String!
+    maiden_name: String!
+    civil_status: String!
+    education: String!
+    reference_control_number: String!
+    main_livelihood: [MainLivelihood] @hasMany
+}
+
+type MainLivelihood {
+    id: Int
+    created_date: String!
+    updated_date: String!
+    created_by: String!
+    created_date_day: Int!
+    created_date_month: Int!
+    created_date_year: Int!
+    main_livelihood_uuid: String!
+    personal_information_uuid: String!
+    updated_by: String!
+    updated_date_day: Int!
+    updated_date_month: Int!
+    updated_date_year: Int!
+    uuid: String
+    barangay_id: String!
+    barangay_name: String!
+    municipal_id: String!
+    municipal_name: String!
+    province_id: String!
+    province_name: String!
+    region_id: String!
+    region_name: String!
+}
